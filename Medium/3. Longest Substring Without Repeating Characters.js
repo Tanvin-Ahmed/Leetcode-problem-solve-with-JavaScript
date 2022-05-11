@@ -5,7 +5,7 @@ var lengthOfLongestSubstring = function (s) {
 		const char = s[i];
 		if (!substring.includes(char)) {
 			if (!substring2) substring = substring.concat(char);
-			console.log(substring);
+			// console.log(substring);
 		} else {
 			for (let j = i - 1; j <= s.length; j++) {
 				const char1 = s[j];
@@ -27,7 +27,7 @@ var lengthOfLongestSubstring = function (s) {
 		}
 	}
 
-	return substring;
+	return substring.length;
 };
 
 console.log(lengthOfLongestSubstring("anviaj"));
