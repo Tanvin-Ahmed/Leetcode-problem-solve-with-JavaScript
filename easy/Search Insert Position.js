@@ -13,10 +13,10 @@ const searchInsert = (numbs, target) => {
 		if (numbs[mid] > target) {
 			r = mid - 1;
 			if (numbs[n] > target && numbs[mid] > target) position = mid;
-			else position = mid;
+			else position = mid + 1;
 		} else if (numbs[mid] < target) {
 			l = mid + 1;
-			if (numbs[n] > target && numbs[mid] > target) position = mid + 1;
+			if (numbs[n] > target && numbs[mid] > target) position = mid;
 			else position = mid + 1;
 		} else return mid;
 	}
@@ -24,4 +24,4 @@ const searchInsert = (numbs, target) => {
 	return position;
 };
 
-console.log(searchInsert([8], 7));
+console.log(searchInsert([], 7));
