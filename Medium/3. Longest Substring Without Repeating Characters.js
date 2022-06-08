@@ -1,33 +1,26 @@
-var lengthOfLongestSubstring = function (s) {
-	let substring = "";
-	let substring2 = "";
+const lengthOfLongestSubstring = s => {
+	if (!s.length) return 0;
+
+	let substrLength = 1;
+	const substring = [];
+
 	for (let i = 0; i < s.length; i++) {
-		const char = s[i];
-		if (!substring.includes(char)) {
-			if (!substring2) substring = substring.concat(char);
-			// console.log(substring);
-		} else {
-			for (let j = i - 1; j <= s.length; j++) {
-				const char1 = s[j];
-				if (char1) {
-					if (!substring2.includes(char1)) {
-						substring2 = substring2.concat(char1);
-						if (substring.length <= substring2.length) {
-							substring = substring2;
-						}
-					} else {
-						if (substring.length <= substring2.length) {
-							substring = substring2;
-						} else {
-							substring2 = "";
-						}
-					}
-				} else break;
+		const element = s[i];
+
+		if (substring.includes(element)) {
+			substrLength = Math.max(substrLength, substring.length);
+
+			for (let j = 0; j < substring.length; j++) {
+				if (substring[j] === element) {
+					substring.splice(0, j + 1);
+					break;
+				}
 			}
 		}
+		substring.push(element);
 	}
 
-	return substring.length;
+	return Math.max(substring.length, substrLength);
 };
 
-console.log(lengthOfLongestSubstring("anviaj"));
+console.log(lengthOfLongestSubstring("abcabcbb"));
